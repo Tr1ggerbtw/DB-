@@ -43,7 +43,7 @@
 
 ## ER-Діаграма (Entity-Relationship Diagram)
 
-![DIAGRAMA!!!!](lab1/lab1_scheme.png)
+![DIAGRAMA!!!!](lab1_scheme.png)
 
 ## Опис сутностей та зв'язків
 
