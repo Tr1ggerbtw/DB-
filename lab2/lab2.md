@@ -12,7 +12,7 @@
 ```sql
 CREATE TABLE AppUser
 (
-    user_id BIGSERIAL PRIMARY KEY,
+    appuser_id BIGSERIAL PRIMARY KEY,
     username VARCHAR(32) NOT NULL UNIQUE,
     password VARCHAR(128) NOT NULL
 );
@@ -28,14 +28,14 @@ VALUES
 ```sql
 CREATE TABLE UserInfo
 (
-    user_id BIGINT PRIMARY KEY,
+    appuser_id BIGINT PRIMARY KEY,
     PhoneNumber VARCHAR(15),
     Email VARCHAR(254),
     Birthday DATE,
-    CONSTRAINT fk_userinfo_user FOREIGN KEY (user_id) REFERENCES AppUser(user_id)
+    CONSTRAINT fk_userinfo_user FOREIGN KEY (appuser_id) REFERENCES AppUser(appuser_id)
 );
 -- insert example
-INSERT INTO UserInfo (user_id, PhoneNumber, Email, Birthday)
+INSERT INTO UserInfo (appuser_id, PhoneNumber, Email, Birthday)
 VALUES
     (1, '+380501234567', 'sasha.shlyapik@example.com', '1986-04-07'),
     (2, '+380679876543', 'robert.polson@example.com', '1889-01-06'),
@@ -46,27 +46,26 @@ VALUES
 ```sql
 CREATE TABLE UserLibrary
 (
-    library_id BIGSERIAL PRIMARY KEY,
-    user_id BIGINT NOT NULL,
-    CONSTRAINT fk_userlibrary_user FOREIGN KEY (user_id) REFERENCES AppUser(user_id)
+    userlibrary_id BIGSERIAL PRIMARY KEY,
+    appuser_id BIGINT NOT NULL,
+    CONSTRAINT fk_userlibrary_user FOREIGN KEY (appuser_id) REFERENCES AppUser(appuser_id)
 );
 -- insert example
-INSERT INTO UserLibrary (user_id)
+INSERT INTO UserLibrary (appuser_id)
 VALUES
     (1), 
     (2), 
     (3);
-
 ```
 
 #### GameCollection
 ```sql
 CREATE TABLE GameCollection
 (
-    collection_id BIGSERIAL PRIMARY KEY,
-    library_id BIGINT NOT NULL,
+    gamecollection_id BIGSERIAL PRIMARY KEY,
+    userlibrary_id BIGINT NOT NULL,
     Name VARCHAR(32) NOT NULL,
-    CONSTRAINT fk_collection_library FOREIGN KEY (library_id) REFERENCES UserLibrary(library_id)
+    CONSTRAINT fk_collection_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id)
 );
 ```
 
@@ -83,7 +82,6 @@ CREATE TABLE Category
 
 #### Game
 ```sql
-
 CREATE TABLE Game
 (
     game_id BIGSERIAL PRIMARY KEY,
@@ -122,12 +120,12 @@ VALUES
 ```sql
 CREATE TABLE LibraryCollection
 (
-    collection_id BIGINT NOT NULL,
-    library_id BIGINT NOT NULL,
+    gamecollection_id BIGINT NOT NULL,
+    userlibrary_id BIGINT NOT NULL,
     game_id BIGINT NOT NULL,
-    PRIMARY KEY (collection_id, library_id, game_id),
-    CONSTRAINT fk_libcoll_collection FOREIGN KEY (collection_id) REFERENCES GameCollection(collection_id),
-    CONSTRAINT fk_libcoll_library FOREIGN KEY (library_id) REFERENCES UserLibrary(library_id),
+    PRIMARY KEY (gamecollection_id, userlibrary_id, game_id),
+    CONSTRAINT fk_libcoll_collection FOREIGN KEY (gamecollection_id) REFERENCES GameCollection(gamecollection_id),
+    CONSTRAINT fk_libcoll_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id),
     CONSTRAINT fk_libcoll_game FOREIGN KEY (game_id) REFERENCES Game(game_id)
 );
 ```
@@ -136,11 +134,11 @@ CREATE TABLE LibraryCollection
 ```sql
 CREATE TABLE Progress
 (
-    library_id BIGINT NOT NULL,
+    userlibrary_id BIGINT NOT NULL,
     game_id BIGINT NOT NULL,
     Hours_played INTEGER,
-    PRIMARY KEY (library_id, game_id),
-    CONSTRAINT fk_progress_library FOREIGN KEY (library_id) REFERENCES UserLibrary(library_id),
+    PRIMARY KEY (userlibrary_id, game_id),
+    CONSTRAINT fk_progress_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id),
     CONSTRAINT fk_progress_game FOREIGN KEY (game_id) REFERENCES Game(game_id)
 );
 ```
@@ -161,12 +159,12 @@ CREATE TABLE GameCategory
 ```sql
 CREATE TABLE UnlockedAchievement
 (
-    library_id BIGINT NOT NULL,
+    userlibrary_id BIGINT NOT NULL,
     game_id BIGINT NOT NULL,
     achievement_id BIGINT NOT NULL,
     Data_complete DATE,
-    PRIMARY KEY (library_id, game_id, achievement_id),
-    CONSTRAINT fk_unlocked_library FOREIGN KEY (library_id) REFERENCES UserLibrary(library_id),
+    PRIMARY KEY (userlibrary_id, game_id, achievement_id),
+    CONSTRAINT fk_unlocked_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id),
     CONSTRAINT fk_unlocked_game FOREIGN KEY (game_id) REFERENCES Game(game_id),
     CONSTRAINT fk_unlocked_achievement FOREIGN KEY (achievement_id) REFERENCES Achievement(achievement_id)
 );
