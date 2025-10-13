@@ -85,7 +85,7 @@ CREATE TABLE Category
 CREATE TABLE Game
 (
     game_id BIGSERIAL PRIMARY KEY,
-    Price DECIMAL(10, 2),
+    Price DECIMAL(10, 2) CHECK (Price > 0),
     Name VARCHAR(64) NOT NULL,
     Description TEXT,
     Release_date DATE
