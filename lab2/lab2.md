@@ -16,6 +16,12 @@ CREATE TABLE AppUser
     username VARCHAR(32) NOT NULL UNIQUE,
     password VARCHAR(128) NOT NULL
 );
+-- insert example
+INSERT INTO AppUser (username, password)
+VALUES 
+    ('SashaShlyapik', '$2a$12$Qn7uFgVs1HbxzLIMVKadJOo9wAhGzmp18LAe0wRYvM99YqWIh94lO'),
+    ('RobertPolson', '$2a$12$wPSeNt5Ig4k/ctiEDQbN..w8cBSGxG7M6eHbqSe9cVAe7uCWg6ZFy'),
+    ('Magnojezz', '$2a$12$l0b1cygLGtQB7D5.ziKJiuwNpryJH/Pjr6JCGvGPWaEZjGZCo6zSe');
 ```
 
 #### UserInfo
@@ -27,7 +33,13 @@ CREATE TABLE UserInfo
     Email VARCHAR(254),
     Birthday DATE,
     CONSTRAINT fk_userinfo_user FOREIGN KEY (user_id) REFERENCES AppUser(user_id)
-); 
+);
+-- insert example
+INSERT INTO UserInfo (user_id, PhoneNumber, Email, Birthday)
+VALUES
+    (1, '+380501234567', 'sasha.shlyapik@example.com', '1986-04-07'),
+    (2, '+380679876543', 'robert.polson@example.com', '1889-01-06'),
+    (3, NULL, 'magnojezz@example.com', '2006-09-11');
 ```
 
 #### UserLibrary
@@ -38,6 +50,13 @@ CREATE TABLE UserLibrary
     user_id BIGINT NOT NULL,
     CONSTRAINT fk_userlibrary_user FOREIGN KEY (user_id) REFERENCES AppUser(user_id)
 );
+-- insert example
+INSERT INTO UserLibrary (user_id)
+VALUES
+    (1), 
+    (2), 
+    (3);
+
 ```
 
 #### GameCollection
@@ -69,9 +88,16 @@ CREATE TABLE Game
 (
     game_id BIGSERIAL PRIMARY KEY,
     Price DECIMAL(10, 2),
+    Name VARCHAR(64) NOT NULL,
     Description TEXT,
     Release_date DATE
 );
+-- insert example
+INSERT INTO Game (Price, Name, Description, Release_date)
+VALUES
+    (25.99, 'Shadow Friend', 'Late king decrees the next monarch to be elected by the people. Become one.', '2021-09-02'),
+    (64.28, 'Mars Colony Tycoon', 'Colonize Mars, but be aware of price of mistakes', '2010-03-10'),
+    (88.14, 'Cats, Cats and Cats', 'Meow, meow, meow, meow', '2019-05-05');
 ```
 
 #### Achievement
@@ -84,6 +110,12 @@ CREATE TABLE Achievement
     Goal TEXT,
     CONSTRAINT fk_achievement_game FOREIGN KEY (game_id) REFERENCES Game(game_id)
 );
+-- insert example
+INSERT INTO Achievement (game_id, Name, Goal)
+VALUES
+    (1, 'Silent Influence', 'Win the election without publicly campaigning.'),
+    (2, 'Self-Sufficient', 'Produce all necessary resources locally on Mars.'),
+    (3, 'Meow-narch', 'Unlock the legendary "King Cat".');
 ```
 
 #### LibraryCollection
