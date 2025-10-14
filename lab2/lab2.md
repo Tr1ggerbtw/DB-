@@ -162,6 +162,13 @@ CREATE TABLE Progress
     CONSTRAINT fk_progress_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id),
     CONSTRAINT fk_progress_game FOREIGN KEY (game_id) REFERENCES Game(game_id)
 );
+-- insert example
+INSERT INTO Progress (userlibrary_id, game_id, Hours_played) 
+VALUES 
+	(1, 1, 52),
+	(1, 3, 183),
+	(2, 2, 8751),
+	(3, 3, 2);
 ```
 
 #### GameCategory
