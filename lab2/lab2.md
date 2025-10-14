@@ -142,6 +142,13 @@ CREATE TABLE LibraryCollection
     CONSTRAINT fk_libcoll_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id),
     CONSTRAINT fk_libcoll_game FOREIGN KEY (game_id) REFERENCES Game(game_id)
 );
+-- insert example
+INSERT INTO LibraryCollection (gamecollection_id, userlibrary_id, game_id)
+VALUES 
+	(1, 1, 1),
+	(2, 1, 3),
+	(3, 2, 2),
+	(4, 3, 3);
 ```
 
 #### Progress
