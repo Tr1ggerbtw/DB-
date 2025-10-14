@@ -204,4 +204,11 @@ CREATE TABLE UnlockedAchievement
     CONSTRAINT fk_unlocked_game FOREIGN KEY (game_id) REFERENCES Game(game_id),
     CONSTRAINT fk_unlocked_achievement FOREIGN KEY (achievement_id) REFERENCES Achievement(achievement_id)
 );
+-- insert example
+INSERT INTO UnlockedAchievement (userlibrary_id, game_id, achievement_id, Data_complete)
+VALUES 
+	(1, 1, 1, '2025-10-14'),
+	(1, 3, 3, '2022-01-23'),
+	(2, 2, 2, '2019-11-20'),
+	(3, 3, 3, '2023-07-23');
 ```
