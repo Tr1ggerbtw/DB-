@@ -78,6 +78,13 @@ CREATE TABLE Category
     Description TEXT,
     Age_min INTEGER
 );
+-- insert example
+INSERT INTO Category (Name, Description, Age_min)
+VALUES 
+	('Strategy', 'Games that require careful planning and skill to achieve victory.', 12), 
+	('RPG', 'Role-playing games where playes assume the roles of characters in a fictional settings.', 16),
+	('Simulation', 'Games that simulate real-world or fictional activities.', 6),
+	('Adventure', 'Games with a focus on exploration and puzzle-solving.', 8);
 ```
 
 #### Game
