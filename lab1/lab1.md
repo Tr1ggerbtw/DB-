@@ -91,6 +91,7 @@
 + **(userlibrary_id, game_id) (PK):** Композитний первинний ключ.
 + **userlibrary_id (FK):** Ідентифікатор бібліотеки користувача.
 + **game_id (FK):** Ідентифікатор гри.
++ **Hours_played:** Відстежування кількості годин у грі 
 
 #### LibraryCollection
 + **(gamecollection_id, library_id, game_id) (PK):** Композитний первинний ключ.
