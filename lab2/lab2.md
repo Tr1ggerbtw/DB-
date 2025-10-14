@@ -23,6 +23,7 @@ VALUES
     ('RobertPolson', '$2a$12$wPSeNt5Ig4k/ctiEDQbN..w8cBSGxG7M6eHbqSe9cVAe7uCWg6ZFy'),
     ('Magnojezz', '$2a$12$l0b1cygLGtQB7D5.ziKJiuwNpryJH/Pjr6JCGvGPWaEZjGZCo6zSe');
 ```
+![AppUser](resultofscripts/appUser.jpg)
 
 #### UserInfo
 ```sql
@@ -41,6 +42,7 @@ VALUES
     (2, '+380679876543', 'robert.polson@example.com', '1889-01-06'),
     (3, NULL, 'magnojezz@example.com', '2006-09-11');
 ```
+![UserInfo](resultofscripts/userInfo.jpg)
 
 #### UserLibrary
 ```sql
@@ -57,6 +59,7 @@ VALUES
     (2), 
     (3);
 ```
+![UserLibrary](resultofscripts/userLibrary.jpg)
 
 #### GameCollection
 ```sql
@@ -75,6 +78,7 @@ VALUES
 	(2, 'Must Play'),
 	(3, 'Cozy Games');
 ```
+![GameCollection](resultofscripts/gamecollection.jpg)
 
 #### Category
 ```sql
@@ -93,6 +97,7 @@ VALUES
 	('Simulation', 'Games that simulate real-world or fictional activities.', 6),
 	('Adventure', 'Games with a focus on exploration and puzzle-solving.', 8);
 ```
+![Category](resultofscripts/category.jpg)
 
 #### Game
 ```sql
@@ -100,7 +105,7 @@ CREATE TABLE Game
 (
     game_id BIGSERIAL PRIMARY KEY,
     Price DECIMAL(10, 2) CHECK (Price > 0),
-    Name VARCHAR(64) NOT NULL,
+    Name VARCHAR(64) UNIQUE NOT NULL,
     Description TEXT,
     Release_date DATE
 );
@@ -111,6 +116,7 @@ VALUES
     (64.28, 'Mars Colony Tycoon', 'Colonize Mars, but be aware of price of mistakes', '2010-03-10'),
     (88.14, 'Cats, Cats and Cats', 'Meow, meow, meow, meow', '2019-05-05');
 ```
+![Game](resultofscripts/game.jpg)
 
 #### Achievement
 ```sql
@@ -129,6 +135,7 @@ VALUES
     (2, 'Self-Sufficient', 'Produce all necessary resources locally on Mars.'),
     (3, 'Meow-narch', 'Unlock the legendary "King Cat".');
 ```
+![Achievement](resultofscripts/achievement.jpg)
 
 #### LibraryCollection
 ```sql
@@ -150,6 +157,7 @@ VALUES
 	(3, 2, 2),
 	(4, 3, 3);
 ```
+![LibraryCollection](resultofscripts/librarycollection.jpg)
 
 #### Progress
 ```sql
@@ -170,6 +178,7 @@ VALUES
 	(2, 2, 8751),
 	(3, 3, 2);
 ```
+![Progress](resultofscripts/progress.jpg)
 
 #### GameCategory
 ```sql
@@ -190,6 +199,7 @@ VALUES
 	(2, 3),
 	(3, 3);
 ```
+![GameCategory](resultofscripts/gamecategory.jpg)
 
 #### UnlockedAchievement
 ```sql
@@ -212,3 +222,9 @@ VALUES
 	(2, 2, 2, '2019-11-20'),
 	(3, 3, 3, '2023-07-23');
 ```
+![UnlockedAchievement](resultofscripts/unlockedachievement.jpg)
+
+## Висновок
+
+Успішно реалізовано перетворення ER-діаграми на реляційну схему PostgreSQL. Створено 11 таблиць, коректно визначено всі первинні та зовнішні ключі, включаючи реалізацію зв'язків "багато-до-багатьох" через проміжні таблиці. Забезпечено цілісність даних та надано приклади наповнення кожної таблиці, отримана схема повністю готова до використання для зберігання інформації про користувачів, ігри та їхній прогрес!
+
