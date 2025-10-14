@@ -67,6 +67,13 @@ CREATE TABLE GameCollection
     Name VARCHAR(32) NOT NULL,
     CONSTRAINT fk_collection_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id)
 );
+-- insert example
+INSERT INTO GameCollection (userlibrary_id, Name) 
+VALUES 
+	(1, 'Favourites'),
+	(1, 'Legendary'),
+	(2, 'Must Play'),
+	(3, 'Cozy Games');
 ```
 
 #### Category
