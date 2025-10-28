@@ -182,3 +182,54 @@ SET
 	category_id = 2
 WHERE game_id = 4;
 ```
+
+#### DELETE
+```sql
+DELETE 
+FROM UnlockedAchievement
+WHERE userlibrary_id = 1 
+  AND game_id = 3 
+  AND achievement_id = 3;
+```
+
+```sql
+DELETE
+FROM LibraryCollection
+WHERE userlibrary_id = 1
+  AND game_id = 3
+  AND gamecollection_id = 2;
+```
+
+```sql
+DELETE 
+FROM UnlockedAchievement
+WHERE achievement_id = 1;
+```
+
+```sql
+DELETE 
+FROM Achievement
+WHERE achievement_id = 1;
+```
+
+```sql
+DELETE
+FROM UserInfo
+WHERE appuser_id = 3;
+```
+
+```sql
+DELETE 
+FROM Progress
+WHERE userlibrary_id = 3
+  AND game_id = 3;
+```
+
+```sql
+DELETE
+FROM GameCategory
+WHERE game_id = 1
+  AND category_id = 4
+```
+
+
