@@ -86,18 +86,21 @@ VALUES
 ```sql
 SELECT * FROM Category;
 ```
+<img width="841" height="172" alt="category" src="https://github.com/user-attachments/assets/116e1e7b-6bff-4bce-be2e-11a19a1106ea" />
 
 ```sql
 SELECT name, price
 FROM Game
 WHERE price > 50;
 ```
+<img width="304" height="91" alt="game" src="https://github.com/user-attachments/assets/d0b5a3bd-aa7d-4696-a2b8-6ff2679673c6" />
 
 ```sql
 SELECT email, birthday
 FROM UserInfo
 WHERE birthday > '1990-01-01';
 ```
+<img width="295" height="90" alt="userinfo" src="https://github.com/user-attachments/assets/cffe323e-9252-4efc-90e7-7438600a8247" />
 
 ```sql
 SELECT game.name AS GameName, category.name AS CategoryName
@@ -105,6 +108,7 @@ FROM Game
 JOIN GameCategory ON game.game_id = gamecategory.game_id
 JOIN Category ON gamecategory.category_id = category.category_id;
 ```
+<img width="347" height="191" alt="gamejoin" src="https://github.com/user-attachments/assets/a2d7d67e-2a77-4845-8c5c-ae3f50dea388" />
 
 ```sql
 SELECT u.appuser_id, a.username, p.game_id, p.Hours_played
@@ -113,6 +117,7 @@ JOIN UserLibrary u ON p.userlibrary_id = u.userlibrary_id
 JOIN AppUser a ON u.appuser_id = a.appuser_id
 WHERE p.Hours_played > 10;
 ```
+<img width="469" height="142" alt="progress" src="https://github.com/user-attachments/assets/079ebc59-3d23-47ab-bf0a-a283bfb280cf" />
 
 ```sql
 SELECT g.Name AS Game, ach.Name AS Achievement, ach.Goal as AchievementGoal
@@ -120,12 +125,14 @@ FROM Achievement ach
 JOIN Game g ON ach.game_id = g.game_id
 ORDER BY g.Name;
 ```
+<img width="634" height="144" alt="achievemnt" src="https://github.com/user-attachments/assets/8c102afe-2660-47b7-bb1a-cab38e51a5dd" />
 
 ```sql
 SELECT Name, Release_date
 FROM Game
 WHERE Release_date > '2020-01-02';
 ```
+<img width="297" height="97" alt="gameez" src="https://github.com/user-attachments/assets/b072568b-ef3b-47ee-ac9b-0c25d799b343" />
 
 ```sql
 SELECT ui.Email, ui.PhoneNumber
@@ -133,6 +140,7 @@ FROM UserInfo ui
 JOIN AppUser a ON ui.appuser_id = a.appuser_id
 WHERE a.username = 'RobertPolson';
 ```
+<img width="374" height="68" alt="userinfojoin" src="https://github.com/user-attachments/assets/e594d59f-51eb-43ba-8bb2-535eed91c38a" />
 
 #### UPDATE
 ```sql
