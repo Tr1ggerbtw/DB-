@@ -71,3 +71,56 @@ INSERT INTO Progress (userlibrary_id, game_id, Hours_played)
 VALUES
     (5, 4, 25);
 ```
+
+#### SELECT
+```sql
+SELECT * FROM Category;
+```
+
+```sql
+SELECT name, price
+FROM Game
+WHERE price > 50;
+```
+
+```sql
+SELECT email, birthday
+FROM UserInfo
+WHERE birthday > '1990-01-01';
+```
+
+```sql
+SELECT game.name AS GameName, category.name AS CategoryName
+FROM Game
+JOIN GameCategory ON game.game_id = gamecategory.game_id
+JOIN Category ON gamecategory.category_id = category.category_id;
+```
+
+```sql
+SELECT u.appuser_id, a.username, p.game_id, p.Hours_played
+FROM Progress p
+JOIN UserLibrary u ON p.userlibrary_id = u.userlibrary_id
+JOIN AppUser a ON u.appuser_id = a.appuser_id
+WHERE p.Hours_played > 10;
+```
+
+```sql
+SELECT g.Name AS Game, ach.Name AS Achievement, ach.Goal as AchievementGoal
+FROM Achievement ach
+JOIN Game g ON ach.game_id = g.game_id
+ORDER BY g.Name;
+```
+
+```sql
+SELECT Name, Release_date
+FROM Game
+WHERE Release_date > '2020-01-02';
+```
+
+```sql
+SELECT ui.Email, ui.PhoneNumber
+FROM UserInfo ui
+JOIN AppUser a ON ui.appuser_id = a.appuser_id
+WHERE a.username = 'RobertPolson';
+```
+
