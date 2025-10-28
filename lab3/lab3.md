@@ -14,28 +14,28 @@ INSERT INTO Game (Price, Name, Description, Release_date)
 VALUES 
     (19.99, 'Puzzle Game', 'A puzzle game about time manipulation.', '2025-10-28');
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/fe2a01ea-df3b-4aaa-9084-9fc098d9799b" />
+<img width="932" height="138" alt="game" src="https://github.com/user-attachments/assets/339db02a-19de-4d5a-8204-900aed7165c8" />
 
 ```sql
 INSERT INTO Category (Name, Description, Age_min)
 VALUES 
     ('Puzzle', 'Games that emphasize puzzle-solving.', 3);
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/9d1859ef-b210-43a5-9165-b6fabf03db80" />
+<img width="840" height="163" alt="category" src="https://github.com/user-attachments/assets/b07cb95f-a5c5-461f-8e3e-d858607176b6" />
 
 ```sql
 INSERT INTO GameCategory (game_id, category_id)
 VALUES 
     (4, 5);
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/222f8ef0-fb32-4317-8ce0-eaa117501ad9" />
+<img width="219" height="182" alt="gamecategory" src="https://github.com/user-attachments/assets/7922f099-5719-45dd-b072-cb7da67a449c" />
 
 ```sql
 INSERT INTO Achievement (game_id, Name, Goal)
 VALUES 
     (4, 'Time Paradox', 'Complete level 10');
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/49ff089b-ed11-4a86-ae8d-bd000ac28117" />
+<img width="670" height="136" alt="achievement" src="https://github.com/user-attachments/assets/3f7b1185-8d41-450c-b9da-a5c6e02e4819" />
 
 ```sql
 INSERT INTO AppUser (username, password)
@@ -43,7 +43,7 @@ VALUES
     ('ViktorLeheza', '$2a$12$tfsmdmlBWXk22YnIkqOfT.0HbbnrMSxBm92StIlmc4PZNKNcv4cCa'),
     ('AlinaParadoxy', '$2a$12$Fo0Vcj0waLK0riGn07xW9uv/5V5tZFwpFrBamWKtoQTw8GbF0EmAC');
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/a5cfedbb-2c92-4ff3-88f7-2c6fddf7f068" />
+<img width="721" height="167" alt="appuser" src="https://github.com/user-attachments/assets/89372f23-e3f9-4ea4-8994-191db628544d" />
 
 ```sql
 INSERT INTO UserInfo (appuser_id, PhoneNumber, Email, Birthday)
@@ -51,14 +51,14 @@ VALUES
     (4, '+380979734812', 'viktorleheza@example.com', '1964-03-25'),
     (5, '+380675197698', 'paradoxy11@example.com', '2003-11-19');
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/29da4f58-1a63-4f1d-8a44-8c193caf10d2" />
+<img width="548" height="165" alt="userinfo" src="https://github.com/user-attachments/assets/7f945d89-6205-407a-a71f-12e68563640e" />
 
 ```sql
 INSERT INTO UserLibrary (appuser_id)
 VALUES 
     (4), (5);
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/5a60d9d0-c66e-4cd8-a4c1-236585fcaf7a" />
+<img width="245" height="173" alt="userlibrary" src="https://github.com/user-attachments/assets/8b091fcc-e706-4f20-a0de-036b76cc1b5a" />
 
 ```sql
 INSERT INTO GameCollection (userlibrary_id, Name)
@@ -66,21 +66,21 @@ VALUES
     (4, 'Recently Added'),
     (5, 'Strategy');
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/e30fc3ab-4193-406c-9122-135df9bb45dc" />
+<img width="431" height="192" alt="gamecollection" src="https://github.com/user-attachments/assets/71033d99-ef1c-4a41-a03d-7d87d300c525" />
 
 ```sql
 INSERT INTO LibraryCollection (gamecollection_id, userlibrary_id, game_id)
 VALUES
     (5, 4, 4);
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/eb307357-c69b-4122-a9af-e2b3f9619565" />
+<img width="368" height="165" alt="librarycollection" src="https://github.com/user-attachments/assets/11496d3d-877e-4585-a6fa-9980b5252149" />
 
 ```sql
 INSERT INTO Progress (userlibrary_id, game_id, Hours_played)
 VALUES
     (5, 4, 25);
 ```
-<img width="224" height="169" alt="image" src="https://github.com/user-attachments/assets/43981be4-af6a-4b9f-95a3-3a9183422460" />
+<img width="342" height="167" alt="progress" src="https://github.com/user-attachments/assets/34c349ab-702a-42af-a9e5-30293d3f7196" />
 
 #### SELECT
 ```sql
