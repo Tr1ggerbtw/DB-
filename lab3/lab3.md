@@ -124,3 +124,61 @@ JOIN AppUser a ON ui.appuser_id = a.appuser_id
 WHERE a.username = 'RobertPolson';
 ```
 
+#### UPDATE
+```sql
+UPDATE UserInfo
+SET
+    Email = 'sashashlyapik11@example.com',
+    PhoneNumber = '+380974938601'
+WHERE appuser_id = 1;
+```
+
+```sql
+UPDATE AppUser
+SET
+    username = 'daniilmagnojezz',
+    password = '$2a$12$ytCpHKYDmvxEdtARudh3puu/8PF4.zhAID4CLDDdUA/r4fQitGlGS'
+WHERE appuser_id = 3;
+```
+
+```sql
+UPDATE GameCollection
+SET
+    Name = 'Top Strategy'
+WHERE Name = 'Strategy';
+```
+
+```sql
+UPDATE Game
+SET
+    Price = Price * 0.8
+WHERE game_id = 2;
+```
+
+```sql
+UPDATE Category
+SET
+	Description = 'Games that simulate real-world or fictional activities, like THE SIMS'
+WHERE Name = 'Simulation';
+```
+
+```sql
+UPDATE Progress
+SET
+	Hours_played = 63
+WHERE userlibrary_id = 5 AND game_id = 4;
+```
+
+```sql
+UPDATE UnlockedAchievement
+SET 
+	Data_complete = '2021-04-15'
+WHERE userlibrary_id = 2;
+```
+
+```sql
+UPDATE GameCategory
+SET
+	category_id = 2
+WHERE game_id = 4;
+```
