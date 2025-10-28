@@ -217,6 +217,7 @@ WHERE userlibrary_id = 1
   AND game_id = 3 
   AND achievement_id = 3;
 ```
+<img width="471" height="113" alt="unlockedachievement" src="https://github.com/user-attachments/assets/85c8629e-6217-431b-9f5d-e56adfa15c39" />
 
 ```sql
 DELETE
@@ -225,24 +226,28 @@ WHERE userlibrary_id = 1
   AND game_id = 3
   AND gamecollection_id = 2;
 ```
+<img width="368" height="148" alt="librarycollection" src="https://github.com/user-attachments/assets/f9f090e1-15e9-47ee-9e6b-ee5151c69d00" />
 
 ```sql
 DELETE 
 FROM UnlockedAchievement
 WHERE achievement_id = 1;
 ```
+<img width="466" height="94" alt="unlockedachievement2" src="https://github.com/user-attachments/assets/fe68d16d-dd79-4d11-941c-e25eb157868f" />
 
 ```sql
 DELETE 
 FROM Achievement
 WHERE achievement_id = 1;
 ```
+<img width="680" height="121" alt="achievement" src="https://github.com/user-attachments/assets/9a6e9235-828a-477a-991c-6cd18049a8f5" />
 
 ```sql
 DELETE
 FROM UserInfo
 WHERE appuser_id = 3;
 ```
+<img width="559" height="144" alt="userinfo" src="https://github.com/user-attachments/assets/31985f86-b08d-4f77-9534-da327c014db5" />
 
 ```sql
 DELETE 
@@ -250,6 +255,7 @@ FROM Progress
 WHERE userlibrary_id = 3
   AND game_id = 3;
 ```
+<img width="344" height="155" alt="progress" src="https://github.com/user-attachments/assets/6d9be583-2aa0-4a4e-8f24-e2f51778825b" />
 
 ```sql
 DELETE
@@ -257,5 +263,5 @@ FROM GameCategory
 WHERE game_id = 1
   AND category_id = 4
 ```
-
+<img width="224" height="169" alt="gamecategory" src="https://github.com/user-attachments/assets/a3c9ceb4-2e6a-4875-9f07-61cb962afb74" />
 
