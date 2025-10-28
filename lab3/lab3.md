@@ -150,6 +150,7 @@ SET
     PhoneNumber = '+380974938601'
 WHERE appuser_id = 1;
 ```
+<img width="552" height="167" alt="userinfo" src="https://github.com/user-attachments/assets/527931c6-c333-4216-b13e-fcd128700a5b" />
 
 ```sql
 UPDATE AppUser
@@ -158,6 +159,7 @@ SET
     password = '$2a$12$ytCpHKYDmvxEdtARudh3puu/8PF4.zhAID4CLDDdUA/r4fQitGlGS'
 WHERE appuser_id = 3;
 ```
+<img width="702" height="171" alt="appuser" src="https://github.com/user-attachments/assets/71d783a4-2755-47c0-89ff-0f38778fe347" />
 
 ```sql
 UPDATE GameCollection
@@ -165,6 +167,7 @@ SET
     Name = 'Top Strategy'
 WHERE Name = 'Strategy';
 ```
+<img width="434" height="195" alt="gamecollection" src="https://github.com/user-attachments/assets/f150ef20-cb3b-4eed-b03f-470a76205f72" />
 
 ```sql
 UPDATE Game
@@ -172,6 +175,7 @@ SET
     Price = Price * 0.8
 WHERE game_id = 2;
 ```
+<img width="933" height="145" alt="game" src="https://github.com/user-attachments/assets/d1500100-4d1f-4664-9e93-4c80557896f6" />
 
 ```sql
 UPDATE Category
@@ -179,6 +183,7 @@ SET
 	Description = 'Games that simulate real-world or fictional activities, like THE SIMS'
 WHERE Name = 'Simulation';
 ```
+<img width="847" height="166" alt="category" src="https://github.com/user-attachments/assets/2fdf26c7-abfb-499c-be48-0baf7142cb17" />
 
 ```sql
 UPDATE Progress
@@ -186,6 +191,7 @@ SET
 	Hours_played = 63
 WHERE userlibrary_id = 5 AND game_id = 4;
 ```
+<img width="337" height="166" alt="progress" src="https://github.com/user-attachments/assets/7b3d49a0-dbae-4bcf-a68c-1f14874ebddf" />
 
 ```sql
 UPDATE UnlockedAchievement
@@ -193,6 +199,7 @@ SET
 	Data_complete = '2021-04-15'
 WHERE userlibrary_id = 2;
 ```
+<img width="466" height="143" alt="unlockedachievement" src="https://github.com/user-attachments/assets/14580366-33b5-45d9-8f6d-e49f7d9f885d" />
 
 ```sql
 UPDATE GameCategory
@@ -200,6 +207,7 @@ SET
 	category_id = 2
 WHERE game_id = 4;
 ```
+<img width="222" height="192" alt="gamecategory" src="https://github.com/user-attachments/assets/0245fdc2-76c9-47ed-acc4-6397cbba0f81" />
 
 #### DELETE
 ```sql
