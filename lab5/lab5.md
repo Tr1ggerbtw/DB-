@@ -92,7 +92,7 @@
 **Аналіз `LibraryCollection`:**
 У цій таблиці часткова функціональну залежність: `gamecollection_id → userlibrary_id`. Атрибут `userlibrary_id` є зайвим у цій сутності, оскільки колекція вже прив'язана до бібліотеки у таблиці `GameCollection`.
 
-**Рішення:**
+**Рішення: Змінюємо структуру таблиці, видаляючи атрибут userlibrary_id. Тепер таблиця LibraryCollection слугує лише для зв'язку "багато-до-багатьох" між GameCollection та Game.**
 
 ### 3.3. Третя нормальна форма (3NF)
 
@@ -101,8 +101,106 @@
 **Аналіз `UnlockedAchievement`:**
 У цій таблиці присутня транзитивна залежність. Атрибут `game_id` залежить від `achievement_id`. Зберігання ідентифікатора гри в цій таблиці створює надлишковість, оскільки кожна ачівка вже належить унікальній грі.
 
-**Рішення:**
+**Рішення: Видаляємо атрибут game_id з таблиці UnlockedAchievement.**
 
 ---
 
 ## 4. Фінальний SQL DDL (Нормалізована схема — 3NF)
+
+```sql
+CREATE TABLE AppUser
+(
+    appuser_id BIGSERIAL PRIMARY KEY,
+    username VARCHAR(32) NOT NULL UNIQUE,
+    password VARCHAR(128) NOT NULL
+);
+
+CREATE TABLE UserInfo
+(
+    appuser_id BIGINT PRIMARY KEY,
+    PhoneNumber VARCHAR(15),
+    Email VARCHAR(254),
+    Birthday DATE,
+    CONSTRAINT fk_userinfo_user FOREIGN KEY (appuser_id) REFERENCES AppUser(appuser_id)
+);
+
+CREATE TABLE UserLibrary
+(
+    userlibrary_id BIGSERIAL PRIMARY KEY,
+    appuser_id BIGINT NOT NULL,
+    CONSTRAINT fk_userlibrary_user FOREIGN KEY (appuser_id) REFERENCES AppUser(appuser_id)
+);
+
+CREATE TABLE GameCollection
+(
+    gamecollection_id BIGSERIAL PRIMARY KEY,
+    userlibrary_id BIGINT NOT NULL,
+    Name VARCHAR(32) NOT NULL,
+    CONSTRAINT fk_collection_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id)
+);
+
+CREATE TABLE Category
+(
+    category_id BIGSERIAL PRIMARY KEY,
+    Name VARCHAR(32) NOT NULL,
+    Description TEXT,
+    Age_min INTEGER
+);
+
+CREATE TABLE Game
+(
+    game_id BIGSERIAL PRIMARY KEY,
+    Price DECIMAL(10, 2) CHECK (Price > 0),
+    Name VARCHAR(64) UNIQUE NOT NULL,
+    Description TEXT,
+    Release_date DATE
+);
+
+CREATE TABLE Achievement
+(
+    achievement_id BIGSERIAL PRIMARY KEY,
+    game_id BIGINT NOT NULL,
+    Name VARCHAR(64) NOT NULL,
+    Goal TEXT,
+    CONSTRAINT fk_achievement_game FOREIGN KEY (game_id) REFERENCES Game(game_id)
+);
+
+CREATE TABLE LibraryCollection
+(
+    gamecollection_id BIGINT NOT NULL,
+    game_id BIGINT NOT NULL,
+    PRIMARY KEY (gamecollection_id, game_id),
+    CONSTRAINT fk_libcoll_collection FOREIGN KEY (gamecollection_id) REFERENCES GameCollection(gamecollection_id),
+    CONSTRAINT fk_libcoll_game FOREIGN KEY (game_id) REFERENCES Game(game_id)
+);
+
+CREATE TABLE Progress
+(
+    userlibrary_id BIGINT NOT NULL,
+    game_id BIGINT NOT NULL,
+    Hours_played INTEGER,
+    PRIMARY KEY (userlibrary_id, game_id),
+    CONSTRAINT fk_progress_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id),
+    CONSTRAINT fk_progress_game FOREIGN KEY (game_id) REFERENCES Game(game_id)
+);
+
+CREATE TABLE GameCategory
+(
+    game_id BIGINT NOT NULL,
+    category_id BIGINT NOT NULL,
+    PRIMARY KEY (game_id, category_id),
+    CONSTRAINT fk_gamecat_game FOREIGN KEY (game_id) REFERENCES Game(game_id),
+    CONSTRAINT fk_gamecat_category FOREIGN KEY (category_id) REFERENCES Category(category_id)
+);
+
+
+CREATE TABLE UnlockedAchievement
+(
+    userlibrary_id BIGINT NOT NULL,
+    achievement_id BIGINT NOT NULL,
+    Data_complete DATE,
+    PRIMARY KEY (userlibrary_id, achievement_id),
+    CONSTRAINT fk_unlocked_library FOREIGN KEY (userlibrary_id) REFERENCES UserLibrary(userlibrary_id),
+    CONSTRAINT fk_unlocked_achievement FOREIGN KEY (achievement_id) REFERENCES Achievement(achievement_id)
+);
+```
