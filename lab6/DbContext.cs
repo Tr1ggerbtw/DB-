@@ -113,6 +113,10 @@ public class GameLibraryContext : DbContext
                 .IsRequired()
                 .HasMaxLength(32);
         
+        /* modelBuilder.Entity<Category>()
+         .Property(x => x.Description)
+            .HasMaxLength(500);
+        */
         modelBuilder.Entity<Achievement>()
             .Property(x => x.Name)
                 .IsRequired()
