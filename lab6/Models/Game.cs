@@ -7,6 +7,7 @@ public class Game
     public string Name { get; set; } = null!;
     public string? Description { get; set; }
     public DateTime? ReleaseDate { get; set; }
+    public bool IsIndie { get; set; }
 
     public ICollection<Achievement> Achievements { get; set; } = new List<Achievement>();
     public ICollection<GameCategory> GameCategories { get; set; } = new List<GameCategory>();

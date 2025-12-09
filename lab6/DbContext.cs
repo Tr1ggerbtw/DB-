@@ -102,6 +102,11 @@ public class GameLibraryContext : DbContext
                 
         modelBuilder.Entity<Game>()
             .Property(x => x.Description).HasMaxLength(2000);
+
+        modelBuilder.Entity<Game>()
+            .Property(x => x.IsIndie)
+            .IsRequired()
+            .HasDefaultValue(false);
         
         modelBuilder.Entity<Category>()
             .Property(x => x.Name)
