@@ -50,7 +50,7 @@ namespace lab6.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Games", x => x.GameId);
-                    table.CheckConstraint("CK_Game_Price", "price > 0");
+                    table.CheckConstraint("CK_Game_Price", "\"Price\" > 0");
                 });
 
             migrationBuilder.CreateTable(

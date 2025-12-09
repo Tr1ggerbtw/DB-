@@ -8,4 +8,5 @@ public class AppUser
 
     public UserInfo? UserInfo { get; set; }
     public UserLibrary? UserLibrary { get; set; }
+	public ICollection<Review> Reviews { get; set; } = new List<Review>();
 }

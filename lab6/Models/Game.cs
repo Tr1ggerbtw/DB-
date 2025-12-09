@@ -12,4 +12,5 @@ public class Game
     public ICollection<GameCategory> GameCategories { get; set; } = new List<GameCategory>();
     public ICollection<LibraryCollection> LibraryCollections { get; set; } = new List<LibraryCollection>();
     public ICollection<Progress> Progresses { get; set; } = new List<Progress>();
+    public ICollection<Review> Reviews { get; set; } = new List<Review>();
 }

@@ -37,6 +37,8 @@ public class GameLibraryContext : DbContext
             .HasKey(x => x.CategoryId);
         modelBuilder.Entity<Achievement>()
             .HasKey(x => x.AchievementId);
+        modelBuilder.Entity<Review>()
+            .HasKey(x => x.ReviewId);
         
         modelBuilder.Entity<LibraryCollection>()
             .HasKey(x => new { x.GameCollectionId, x.GameId });
@@ -56,7 +58,15 @@ public class GameLibraryContext : DbContext
             .IsUnique();
 
         modelBuilder.Entity<Game>()
-            .ToTable(x => x.HasCheckConstraint("CK_Game_Price", "price > 0"));
+            .ToTable(x => x.HasCheckConstraint("CK_Game_Price", "\"Price\" > 0"));
+        
+        modelBuilder.Entity<Review>()
+            .Property(x => x.Rating)
+                .IsRequired()
+                .HasAnnotation("CheckConstraint", "Rating >= 0 AND Rating <= 5");
+        
+        modelBuilder.Entity<Review>()
+            .Property(x => x.Comment).HasMaxLength(1000);
         
         modelBuilder.Entity<AppUser>()
             .Property(x => x.Username)
@@ -64,7 +74,7 @@ public class GameLibraryContext : DbContext
             .HasMaxLength(32);
 
         modelBuilder.Entity<AppUser>()
-            .Property(e => e.Password)
+            .Property(x => x.Password)
             .IsRequired()
             .HasMaxLength(128);
 
@@ -78,39 +88,39 @@ public class GameLibraryContext : DbContext
             .Property(x => x.Birthday);
         
         modelBuilder.Entity<UserLibrary>()
-            .Property(e => e.AppUserId).IsRequired();
+            .Property(x => x.AppUserId).IsRequired();
         
         modelBuilder.Entity<Game>()
-            .Property(e => e.Name)
+            .Property(x => x.Name)
             .IsRequired()
             .HasMaxLength(64);
 
         modelBuilder.Entity<Game>()
-            .Property(e => e.Price)
+            .Property(x => x.Price)
             .IsRequired()
             .HasColumnType("decimal(10, 2)");
                 
         modelBuilder.Entity<Game>()
-            .Property(e => e.Description).HasMaxLength(2000);
+            .Property(x => x.Description).HasMaxLength(2000);
         
         modelBuilder.Entity<Category>()
-            .Property(e => e.Name)
+            .Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(32);
                 
         modelBuilder.Entity<Category>()
-            .Property(e => e.Description).HasMaxLength(500);
+            .Property(x => x.Description).HasMaxLength(500);
         
         modelBuilder.Entity<Achievement>()
-            .Property(e => e.Name)
+            .Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(64);
                 
         modelBuilder.Entity<Achievement>()
-            .Property(e => e.Goal).HasMaxLength(500);
+            .Property(x => x.Goal).HasMaxLength(500);
         
         modelBuilder.Entity<GameCollection>()
-            .Property(e => e.Name)
+            .Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(32);
         
@@ -184,6 +194,18 @@ public class GameLibraryContext : DbContext
             .HasOne(x => x.Achievement)
             .WithMany(x => x.UnlockedAchievements)
             .HasForeignKey(x => x.AchievementId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        modelBuilder.Entity<Review>()
+            .HasOne(x => x.Game)
+            .WithMany(x => x.Reviews)
+            .HasForeignKey(x => x.GameId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Review>()
+            .HasOne(x => x.AppUser)
+            .WithMany(x => x.Reviews)
+            .HasForeignKey(x => x.AppUserId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace lab6.Migrations
 {
     [DbContext(typeof(GameLibraryContext))]
-    [Migration("20251209060748_InitialState")]
+    [Migration("20251209062120_InitialState")]
     partial class InitialState
     {
         /// <inheritdoc />
@@ -121,7 +121,7 @@ namespace lab6.Migrations
 
                     b.ToTable("Games", t =>
                         {
-                            t.HasCheckConstraint("CK_Game_Price", "price > 0");
+                            t.HasCheckConstraint("CK_Game_Price", "\"Price\" > 0");
                         });
                 });
 
